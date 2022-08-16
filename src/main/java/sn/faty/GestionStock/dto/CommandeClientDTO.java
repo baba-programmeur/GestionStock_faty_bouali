@@ -1,0 +1,21 @@
+package sn.faty.GestionStock.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.Instant;
+import java.util.List;
+
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CommandeClientDTO {
+    private Long id ;
+    private String  code ;
+    private Instant dateCommande ;
+    private List<LigneCommandeClientDTO> ligneCommandeClients ;
+    private ClientDTO client ;
+}
