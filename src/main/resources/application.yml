@@ -13,3 +13,8 @@ spring:
     show-sql: true
 server:
   port: 8081
+flickr:
+  apiKey: b651c25b5b5d29e26e7e87042291df64
+  apiSecret: 1ece70f09868c048
+  appKey: 72157720854072909-d27173ea3c9d7a11
+  appSecret: 9102dfee89061409

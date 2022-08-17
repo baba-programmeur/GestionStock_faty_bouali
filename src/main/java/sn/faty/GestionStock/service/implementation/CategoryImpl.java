@@ -11,7 +11,6 @@ import sn.faty.GestionStock.exception.EntittyNotFoundException;
 import sn.faty.GestionStock.exception.ErrorCodes;
 import sn.faty.GestionStock.exception.InvalidException;
 import sn.faty.GestionStock.service.Interface.CategoryService;
-import sn.faty.GestionStock.service.mappeur.ArticleMappeurImpl;
 import sn.faty.GestionStock.service.mappeur.CategoryMappeurImpl;
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class CategoryImpl implements CategoryService {
     }
 
     @Override
-    public CategoryDTO saveArticle(CategoryDTO categoryDTO) {
+    public CategoryDTO saveCategory(CategoryDTO categoryDTO) {
 
         List<String> errors= CategoryValidator.validate(categoryDTO);
 

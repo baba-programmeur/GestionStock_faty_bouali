@@ -31,7 +31,7 @@ public enum ErrorCodes {
 
     UTILISATEUR(13000),
 
-    VENTES(14000)
+    VENTES_NOT_FOUND(14000)
 
     ;
     private  int code ;

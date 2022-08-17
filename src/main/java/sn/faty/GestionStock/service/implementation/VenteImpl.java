@@ -120,6 +120,7 @@ public class VenteImpl implements VenteService {
             log.debug("Veuiller donner un nom à rechercher");
             throw  new InvalidException("Veuiller donner un nom à rechercher");
         }
-        return venteMappeur.toDto(venteRepository.findVentesByCode(code))  ;
+        return venteRepository.findVentesByCode(code).map(venteMappeur::toDto)
+                .orElseThrow(()->new EntittyNotFoundException("This vente is not in the databse",ErrorCodes.VENTES_NOT_FOUND)) ;
     }
 }
