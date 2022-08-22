@@ -3,6 +3,7 @@ package sn.faty.GestionStock.controlleur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sn.faty.GestionStock.controlleur.Interfaces.ArticleApi;
 import sn.faty.GestionStock.dto.ArticleDTO;
 import sn.faty.GestionStock.service.Interface.ArticleService;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping
-public class ArticleController implements  ArticleApi{
+public class ArticleController implements ArticleApi {
 
     private ArticleService articleService ;
      @Autowired

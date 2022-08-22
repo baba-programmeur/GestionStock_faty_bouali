@@ -21,6 +21,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.8</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.flickr4java</groupId>
 			<artifactId>flickr4java</artifactId>
@@ -68,6 +76,49 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>com.github.kongchen</groupId>
+				<artifactId>swagger-maven-plugin</artifactId>
+				<version>3.1.8</version>
+				<configuration>
+					<apiSources>
+						<apiSource>
+							<springmvc>true</springmvc>
+							<locations>
+								<location>sn.faty.GestionStock.controlleur</location>
+							</locations>
+
+							<basePath>http://localhost:8081</basePath>
+
+							<info>
+								<title>Swagger API for application</title>
+								<version>${project.version}</version>
+								<description>Swagger pour lapi</description>
+								<contact>
+									<email>laminefaty5261@gmail.com</email>
+									<name>Lamine FATY</name>
+								</contact>
+							</info>
+                      <outputPath>${project.build.directory}</outputPath>
+                       <outputFormats>json</outputFormats>
+
+							<swaggerApiReader>com.github.kongchen.swagger.docgen.reader.SpringMvcApiReader</swaggerApiReader>
+                            <swaggerDirectory>${project.build.directory}</swaggerDirectory>
+						</apiSource>
+					</apiSources>
+				</configuration>
+
+          <executions>
+			  <execution>
+				  <phase>install</phase>
+				  <goals>
+					  <goal>generate</goal>
+				  </goals>
+			  </execution>
+		  </executions>
+			</plugin>
+
 		</plugins>
 
 	</build>

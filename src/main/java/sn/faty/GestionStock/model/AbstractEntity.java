@@ -6,12 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -30,13 +25,24 @@ public class AbstractEntity implements Serializable {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
    private  Long id ;
-   @CreatedDate
-   @Column(name = "DateCreation",nullable = false)
-   @JsonIgnore
+
+   //@CreatedDate
+   @Column(name = "DateCreation")
+
     private Instant createdDate ;
-   @LastModifiedDate
-    @Column(name = "LastUpdateDate",nullable = false)
-    @JsonIgnore
+   //@LastModifiedDate
+    @Column(name = "LastUpdateDate")
+  //  @JsonIgnore
    //Champs techniques non exposes utilises pour faire des requetes de verification selon les dates
-    private Instant lastUpdatedDate ;
+    private Instant lastUpdatedDate;
+    @PrePersist
+    void create()
+    {
+        this.createdDate=Instant.now();
+    }
+    @PreUpdate
+    void update()
+    {
+        this.lastUpdatedDate=Instant.now();
+    }
 }

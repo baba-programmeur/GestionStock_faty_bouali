@@ -3,18 +3,19 @@ package sn.faty.GestionStock.controlleur;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sn.faty.GestionStock.controlleur.Interfaces.CategoryApi;
 import sn.faty.GestionStock.dto.CategoryDTO;
 import sn.faty.GestionStock.service.Interface.CategoryService;
 
 import java.util.List;
 @RestController
 @RequestMapping
-public class CategoryControleur implements  CategoryApi{
+public class CategoryController implements CategoryApi {
 
     private CategoryService categoryService ;
 
     @Autowired
-    public CategoryControleur(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 

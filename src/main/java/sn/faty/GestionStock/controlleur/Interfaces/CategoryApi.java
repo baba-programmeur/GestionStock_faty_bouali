@@ -1,4 +1,4 @@
-package sn.faty.GestionStock.controlleur;
+package sn.faty.GestionStock.controlleur.Interfaces;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -6,7 +6,7 @@ import sn.faty.GestionStock.dto.CategoryDTO;
 
 import java.util.List;
 
-import static sn.faty.GestionStock.controlleur.constants.Constants.APP_ROOT;
+import static sn.faty.GestionStock.constants.Constants.APP_ROOT;
 
 public interface CategoryApi {
 
