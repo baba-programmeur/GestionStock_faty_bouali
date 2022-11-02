@@ -1,4 +1,4 @@
-package sn.faty.GestionStock.model;
+package sn.faty.gestionstock.model;
 
 import lombok.*;
 
@@ -27,6 +27,9 @@ public class Client extends  AbstractEntity {
     @Column(name="Email",unique = true)
 
     private  String mail ;
+
+    @Column(name="idEntreprise")
+    private int idEntreprise ;
 
     @OneToMany(mappedBy="client")
     private List<CommandeClient> commandeClients ;

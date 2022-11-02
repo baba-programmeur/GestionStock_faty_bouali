@@ -1,14 +1,11 @@
-package sn.faty.GestionStock.dto;
+package sn.faty.gestionstock.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import sn.faty.GestionStock.model.*;
-
-import javax.persistence.OneToMany;
-import java.math.BigDecimal;
+import sn.faty.gestionstock.model.*;
 import java.util.List;
 @Data
 @Builder
@@ -18,9 +15,9 @@ public class ArticleDTO {
     private Long id ;
     private String codeArticle ;
     private  String designation ;
-    private BigDecimal prixUnitaireHt ;
-    private BigDecimal prixUnitaireTtc ;
-    private BigDecimal tauxTva ;
+    private Integer prixUnitaireHt ;
+    private Integer prixUnitaireTtc ;
+    private Integer tauxTva ;
     private  String photo ;
     private CategoryDTO category;
     private EntrepriseDTO entreprise;

@@ -1,7 +1,8 @@
-package sn.faty.GestionStock.service.mappeur;
+package sn.faty.gestionstock.service.mappeur;
 
-import sn.faty.GestionStock.dto.CategoryDTO;
-import sn.faty.GestionStock.model.Category;
+import sn.faty.gestionstock.dto.CategoryDTO;
+import sn.faty.gestionstock.model.Adresse;
+import sn.faty.gestionstock.model.Category;
 
 public class CategoryMappeurImpl {
 
@@ -28,6 +29,7 @@ public class CategoryMappeurImpl {
         category.setId(category.getId());
         category.setDesignation(categoryDTO.getDesignation());
         category.setCodeCategory(categoryDTO.getCodeCategory());
+
 
         return  category ;
     }

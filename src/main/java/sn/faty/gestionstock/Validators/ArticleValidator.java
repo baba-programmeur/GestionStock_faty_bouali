@@ -1,7 +1,7 @@
-package sn.faty.GestionStock.Validators;
+package sn.faty.gestionstock.Validators;
 
 import org.springframework.util.StringUtils;
-import sn.faty.GestionStock.dto.ArticleDTO;
+import sn.faty.gestionstock.dto.ArticleDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +20,13 @@ public class ArticleValidator {
 
             if(articleDto ==null)
             {
-                listErrors.add("veuiller remplir le champs CommandeClient");
                 listErrors.add("Veuiller renseigner le prixUnitaire ");
                 listErrors.add("Veuiller renseigner le taux TVA ");
                 listErrors.add("Veuiller renseigner la designation ");
-                listErrors.add("Veullez renseigner la category");
-                listErrors.add("Veullez renseigner l'entreprise");
+            }
 
+            if(articleDto.getPrixUnitaireHt()==null){
+                listErrors.add("veuiller renseigner le prix htt");
             }
             if(articleDto.getPrixUnitaireTtc()==null) {
 
@@ -38,28 +38,13 @@ public class ArticleValidator {
             }
             if(! StringUtils.hasText(articleDto.getCodeArticle()))
             {
-                listErrors.add("Veuiller renseigner le taux TVA ");
+                listErrors.add("Veuiller renseigner le code ");
             }
             if(! StringUtils.hasText(articleDto.getDesignation()))
             {
                 listErrors.add("Veuiller renseigner la designation ");
             }
-            if(articleDto.getCategory()==null)
-            {
-                listErrors.add("Veullez renseigner la category");
-            }
-            if(articleDto.getEntreprise()==null)
-            {
-                listErrors.add("Veullez renseigner l'entreprise");
-            }
-            if(articleDto.getPrixUnitaireTtc()==null)
-            {
-                listErrors.add("Veullez renseigner le prix Unitaire");
-            }
-            if(articleDto.getLigneCommandeClients()==null)
-            {
-                listErrors.add("veuiller remplir le champs CommandeClient");
-            }
+
             return  listErrors ;
 
         }

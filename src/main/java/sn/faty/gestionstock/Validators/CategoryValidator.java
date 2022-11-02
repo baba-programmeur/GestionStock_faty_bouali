@@ -1,12 +1,12 @@
-package sn.faty.GestionStock.Validators;
+package sn.faty.gestionstock.Validators;
 import org.springframework.util.StringUtils;
-import sn.faty.GestionStock.dto.CategoryDTO;
+import sn.faty.gestionstock.dto.CategoryDTO;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryValidator {
 
-    public static List<String> validate(CategoryDTO categoryDTO)
+    public static List<String> validateCategory(CategoryDTO categoryDTO)
 
     {
         List errors=new ArrayList<>();

@@ -1,4 +1,4 @@
-package sn.faty.GestionStock.model;
+package sn.faty.gestionstock.model;
 
 import lombok.*;
 
@@ -18,10 +18,12 @@ public class Article extends  AbstractEntity {
     @Column(name = "CodeArticle")
     private String codeArticle ;
     private  String designation ;
-    private BigDecimal prixUnitaireHt ;
-    private BigDecimal prixUnitaireTtc ;
-    private BigDecimal tauxTva ;
+    private Integer prixUnitaireHt ;
+    private Integer prixUnitaireTtc ;
+    private Integer tauxTva ;
     private  String photo ;
+    @Column(name="code_idEntreprise")
+    private int idEntreprise ;
 
     @ManyToOne
     @JoinColumn(name="idCategory")

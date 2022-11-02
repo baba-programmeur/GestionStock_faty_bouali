@@ -1,7 +1,7 @@
-package sn.faty.GestionStock.service.mappeur;
+package sn.faty.gestionstock.service.mappeur;
 
-import sn.faty.GestionStock.dto.ArticleDTO;
-import sn.faty.GestionStock.model.Article;
+import sn.faty.gestionstock.dto.ArticleDTO;
+import sn.faty.gestionstock.model.Article;
 
 public class ArticleMappeurImpl {
 
@@ -23,9 +23,13 @@ public class ArticleMappeurImpl {
         {
             return  null ;
         }
-       Article article=new Article();
+        Article article=new Article();
         article.setId(article.getId());
         article.setDesignation(articleDTO.getDesignation());
+        article.setCodeArticle(articleDTO.getCodeArticle());
+        article.setPhoto(articleDTO.getPhoto());
+        article.setPrixUnitaireHt(articleDTO.getPrixUnitaireTtc());
+        article.setPrixUnitaireTtc(articleDTO.getPrixUnitaireHt());
         return  article ;
     }
 }

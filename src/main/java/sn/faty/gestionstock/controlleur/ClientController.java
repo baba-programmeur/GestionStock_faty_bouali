@@ -1,12 +1,12 @@
-package sn.faty.GestionStock.controlleur;
+package sn.faty.gestionstock.controlleur;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sn.faty.GestionStock.Repository.ClientRepository;
-import sn.faty.GestionStock.controlleur.Interfaces.ClientAPI;
-import sn.faty.GestionStock.dto.ClientDTO;
-import sn.faty.GestionStock.service.Interface.ClientService;
+import sn.faty.gestionstock.Repository.ClientRepository;
+import sn.faty.gestionstock.controlleur.Interfaces.ClientAPI;
+import sn.faty.gestionstock.dto.ClientDTO;
+import sn.faty.gestionstock.service.Interface.ClientService;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class ClientController implements ClientAPI {
 
     private ClientService clientService ;
 
-    private ClientRepository clientRepository ;
+    private  ClientRepository clientRepository ;
     @Autowired
     public ClientController(ClientService clientService, ClientRepository clientRepository) {
         this.clientService = clientService;
@@ -35,16 +35,17 @@ public class ClientController implements ClientAPI {
 
     @Override
     public void deleteById(Long id) {
-
+        clientService.deleteById(id);
     }
 
     @Override
     public ClientDTO findById(Long id) {
-        return null;
+
+        return clientService.findById(id);
     }
 
     @Override
     public ClientDTO findByNom(String nom) {
-        return null;
+        return clientService.findByNom(nom);
     }
 }

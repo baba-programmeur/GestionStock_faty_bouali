@@ -1,9 +1,14 @@
-package sn.faty.GestionStock.Repository;
+package sn.faty.gestionstock.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import sn.faty.GestionStock.model.Article;
+import sn.faty.gestionstock.model.Article;
+
+import java.util.List;
 
 public interface ArticleRepository  extends JpaRepository<Article ,Long> {
 
    Article findByCodeArticle(String code);
+
+   List<Article> findAllByCategoryId(Long id);
+
 }

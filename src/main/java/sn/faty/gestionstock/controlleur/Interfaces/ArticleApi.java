@@ -1,10 +1,15 @@
-package sn.faty.GestionStock.controlleur.Interfaces;
+package sn.faty.gestionstock.controlleur.Interfaces;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sn.faty.GestionStock.dto.ArticleDTO;
+import sn.faty.gestionstock.dto.ArticleDTO;
+import sn.faty.gestionstock.dto.LigneCommandeClientDTO;
+import sn.faty.gestionstock.dto.LigneCommandeFournisseurDTO;
+import sn.faty.gestionstock.dto.LigneVenteDTO;
+
 import java.util.List;
 
-import static sn.faty.GestionStock.constants.Constants.APP_ROOT;
+import static sn.faty.gestionstock.constants.Constants.APP_ROOT;
 
 
 //@Api(APP_ROOT+"/articles")
@@ -71,6 +76,25 @@ public interface ArticleApi {
     })
 
     */
-   @GetMapping(value = APP_ROOT+"/searchArticle/{code}",produces = MediaType.APPLICATION_JSON_VALUE)
+   @GetMapping(value = APP_ROOT+"/searchArticleBy/{code}",produces = MediaType.APPLICATION_JSON_VALUE)
     ArticleDTO findByCodeArticle(@PathVariable  String code);
+
+
+    @GetMapping(value = APP_ROOT+"/historique/vente/{idArticle}",produces = MediaType.APPLICATION_JSON_VALUE)
+   List<LigneVenteDTO> findHistoriqueVente(@PathVariable Long idArticle);
+
+    @GetMapping(value = APP_ROOT+"/historique/commandeClient/{idArticle}",produces = MediaType.APPLICATION_JSON_VALUE)
+
+  List<LigneCommandeClientDTO> findHistoriqueCommandeClient(@PathVariable Long idArticle);
+
+    @GetMapping(value = APP_ROOT+"/historique/filtre/{idCategory}",produces = MediaType.APPLICATION_JSON_VALUE)
+
+    List<ArticleDTO> findAllArticleByCategory(@PathVariable Long idCategory);
+
+    @GetMapping(value = APP_ROOT+"/historique/commandeFournisseur/{idArticle}",produces = MediaType.APPLICATION_JSON_VALUE)
+
+    List<LigneCommandeFournisseurDTO> findHistoriqueCommandeFournisseur(@PathVariable Long idArticle);
+
+
+
 }

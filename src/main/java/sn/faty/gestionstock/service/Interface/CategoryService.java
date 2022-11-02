@@ -1,5 +1,5 @@
-package sn.faty.GestionStock.service.Interface;
-import sn.faty.GestionStock.dto.CategoryDTO;
+package sn.faty.gestionstock.service.Interface;
+import sn.faty.gestionstock.dto.CategoryDTO;
 
 import java.util.List;
 

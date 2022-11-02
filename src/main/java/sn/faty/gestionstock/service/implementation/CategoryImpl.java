@@ -1,17 +1,20 @@
-package sn.faty.GestionStock.service.implementation;
+package sn.faty.gestionstock.service.implementation;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import sn.faty.GestionStock.Repository.CategoryRepository;
-import sn.faty.GestionStock.Validators.CategoryValidator;
-import sn.faty.GestionStock.dto.CategoryDTO;
-import sn.faty.GestionStock.exception.EntittyNotFoundException;
-import sn.faty.GestionStock.exception.ErrorCodes;
-import sn.faty.GestionStock.exception.InvalidException;
-import sn.faty.GestionStock.service.Interface.CategoryService;
-import sn.faty.GestionStock.service.mappeur.CategoryMappeurImpl;
+import sn.faty.gestionstock.Repository.ArticleRepository;
+import sn.faty.gestionstock.Repository.CategoryRepository;
+import sn.faty.gestionstock.Validators.CategoryValidator;
+import sn.faty.gestionstock.dto.CategoryDTO;
+import sn.faty.gestionstock.exception.EntittyNotFoundException;
+import sn.faty.gestionstock.exception.ErrorCodes;
+import sn.faty.gestionstock.exception.InvalidException;
+import sn.faty.gestionstock.exception.InvalidOperationException;
+import sn.faty.gestionstock.model.Article;
+import sn.faty.gestionstock.service.Interface.CategoryService;
+import sn.faty.gestionstock.service.mappeur.CategoryMappeurImpl;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,21 +24,24 @@ import java.util.stream.Collectors;
 public class CategoryImpl implements CategoryService {
 
     private CategoryRepository categoryRepository;
-    @Autowired
-    public CategoryImpl(CategoryRepository categoryRepository) {
+    private ArticleRepository articleRepository ;
+
+@Autowired
+    public CategoryImpl(CategoryRepository categoryRepository, ArticleRepository articleRepository) {
         this.categoryRepository = categoryRepository;
+        this.articleRepository = articleRepository;
     }
 
     @Override
     public CategoryDTO saveCategory(CategoryDTO categoryDTO) {
 
-        List<String> errors= CategoryValidator.validate(categoryDTO);
+        List<String> errors= CategoryValidator.validateCategory(categoryDTO);
 
         if(!errors.isEmpty())
         {
             log.debug("Article is not valid {} :",categoryDTO);
 
-            throw new InvalidException("Article is not valid", ErrorCodes.ARTICLE_NOT_VALID,errors);
+            throw new InvalidException("Article is not valid", ErrorCodes.CATEGORY_NOT_VALID,errors);
         }
 
         return  CategoryMappeurImpl.toDto(categoryRepository.save(CategoryMappeurImpl.toEntity(categoryDTO)));
@@ -55,6 +61,14 @@ public class CategoryImpl implements CategoryService {
         {
             log.debug("id is null {}");
         }
+
+    List<Article> listeArticle=articleRepository.findAllByCategoryId(id);
+
+        if(! listeArticle.isEmpty()){
+            log.debug("Impossible de supprimer une categorie deja utilise dans un  artciecle");
+            throw  new InvalidOperationException("Impossible de supprimer un article deja utilise dans une artcicle",ErrorCodes.CATEGORY_DEJA_UTILISE);
+        }
+
         categoryRepository.deleteById(id);
     }
 
@@ -66,7 +80,7 @@ public class CategoryImpl implements CategoryService {
             return null;
         }
         return CategoryMappeurImpl.toDto(categoryRepository.findById(id)
-                .orElseThrow(() -> new EntittyNotFoundException("Article with id :"+ id + " is not in the database",ErrorCodes.ARTICLE_NOT_FOUND)));
+                .orElseThrow(() -> new EntittyNotFoundException("Article with id :"+ id + " is not in the database",ErrorCodes.CATEGORY_NOT_FOUND)));
     }
 
     @Override

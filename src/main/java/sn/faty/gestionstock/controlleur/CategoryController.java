@@ -1,11 +1,11 @@
-package sn.faty.GestionStock.controlleur;
+package sn.faty.gestionstock.controlleur;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sn.faty.GestionStock.controlleur.Interfaces.CategoryApi;
-import sn.faty.GestionStock.dto.CategoryDTO;
-import sn.faty.GestionStock.service.Interface.CategoryService;
+import sn.faty.gestionstock.controlleur.Interfaces.CategoryApi;
+import sn.faty.gestionstock.dto.CategoryDTO;
+import sn.faty.gestionstock.service.Interface.CategoryService;
 
 import java.util.List;
 @RestController
