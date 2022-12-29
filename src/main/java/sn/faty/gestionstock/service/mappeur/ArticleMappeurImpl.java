@@ -14,7 +14,10 @@ public class ArticleMappeurImpl {
         return ArticleDTO.builder()
                 .id(article.getId())
                 .designation(article.getDesignation())
-                .codeArticle(article.getCodeArticle())
+                .prixUnitaire(article.getPrixUnitaire())
+                .quantite(article.getQuantite())
+                .nomProduit(article.getNomProduit())
+                .date_creation(article.getCreatedDate())
                  .build();
     }
     public static  Article  toEntity(ArticleDTO articleDTO)
@@ -23,13 +26,13 @@ public class ArticleMappeurImpl {
         {
             return  null ;
         }
-        Article article=new Article();
-        article.setId(article.getId());
+       Article article=new Article();
+        article.setId(articleDTO.getId());
         article.setDesignation(articleDTO.getDesignation());
-        article.setCodeArticle(articleDTO.getCodeArticle());
-        article.setPhoto(articleDTO.getPhoto());
-        article.setPrixUnitaireHt(articleDTO.getPrixUnitaireTtc());
-        article.setPrixUnitaireTtc(articleDTO.getPrixUnitaireHt());
+        article.setPrixUnitaire(articleDTO.getPrixUnitaire());
+        article.setQuantite(articleDTO.getQuantite());
+        article.setNomProduit(articleDTO.getNomProduit());
+        //article.setCreatedDate(articleDTO.getC);
         return  article ;
     }
 }

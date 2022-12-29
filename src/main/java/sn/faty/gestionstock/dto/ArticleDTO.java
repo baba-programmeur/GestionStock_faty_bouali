@@ -6,19 +6,32 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import sn.faty.gestionstock.model.*;
+
+import java.time.Instant;
 import java.util.List;
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArticleDTO {
-    private Long id ;
-    private String codeArticle ;
+
+
+      private String codeArticle ;
+
+      private  String photo ;
+
+     private Long id ;
+
+     private Instant date_creation ;
+
     private  String designation ;
-    private Integer prixUnitaireHt ;
-    private Integer prixUnitaireTtc ;
-    private Integer tauxTva ;
-    private  String photo ;
+
+    private Integer prixUnitaire;
+
+    private String nomProduit ;
+
+    private Integer quantite ;
+
     private CategoryDTO category;
     private EntrepriseDTO entreprise;
     private List<LigneCommandeFournisseurDTO> ligneCommandeFournisseurs ;

@@ -23,12 +23,17 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.6.8</version>
 		</dependency>
-
+<!--		         <dependency>-->
+<!--					<groupId>io.springfox</groupId>-->
+<!--					<artifactId>springfox-swagger2</artifactId>-->
+<!--					<version>2.9.2</version>-->
+<!--				</dependency>-->
 		<dependency>
 			<groupId>com.flickr4java</groupId>
 			<artifactId>flickr4java</artifactId>
@@ -50,6 +55,13 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -57,8 +69,24 @@
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
-			<version>1.4.0.CR1</version>
+			<version>1.5.2.Final</version>
 		</dependency>
+<!--		<dependency>-->
+<!--		<groupId>org.springframework.boot</groupId>-->
+<!--		<artifactId>spring-boot-starter-security</artifactId>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -86,7 +114,7 @@
 						<apiSource>
 							<springmvc>true</springmvc>
 							<locations>
-								<location>sn.faty.GestionStock.controlleur</location>
+								<location>sn.faty.gestionstock.controlleur</location>
 							</locations>
 
 							<basePath>http://localhost:8081</basePath>

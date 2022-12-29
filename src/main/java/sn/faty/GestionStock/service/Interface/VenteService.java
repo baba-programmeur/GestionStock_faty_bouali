@@ -1,13 +1,12 @@
-package sn.faty.GestionStock.service.Interface;
+package sn.faty.gestionstock.service.Interface;
 
-import sn.faty.GestionStock.dto.UtilisateurDTO;
-import sn.faty.GestionStock.dto.VenteDTO;
+import sn.faty.gestionstock.dto.VenteDTO;
 
 import java.util.List;
 
 public interface VenteService {
 
-    VenteDTO saveUtilisateur(VenteDTO venteDTO);
+    VenteDTO saveVente(VenteDTO venteDTO);
 
     List<VenteDTO> findAll();
 
@@ -15,7 +14,7 @@ public interface VenteService {
 
     VenteDTO  findById(Long id);
 
-   VenteDTO findByNom(String code);
+   VenteDTO findByCode(String code);
 
 
 

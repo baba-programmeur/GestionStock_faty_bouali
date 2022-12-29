@@ -1,7 +1,7 @@
-package sn.faty.GestionStock.Validators;
+package sn.faty.gestionstock.Validators;
 
 import org.springframework.util.StringUtils;
-import sn.faty.GestionStock.dto.UtilisateurDTO;
+import sn.faty.gestionstock.dto.UtilisateurDTO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +11,15 @@ public class UtilisateurValidator {
     {
         List<String> listErrors= new ArrayList<>();
 
-        if(utilisateurDTO ==null)
+        if(utilisateurDTO ==null )
         {
             listErrors.add("Veuiller renseigner le nom ");
             listErrors.add("Veuiller renseigner le prénom ");
-            listErrors.add("Veuiller renseigner le nom ");
+            listErrors.add("Veuiller renseigner lemail ");
+            listErrors.add("Veuiller renseigner le mot de passe ");
+
         }
-        if(!StringUtils.hasText(utilisateurDTO.getPrenom())) {
+        if(! StringUtils.hasText(utilisateurDTO.getPrenom())) {
 
             listErrors.add("Veuiller renseigner le prénom ");
         }
@@ -33,22 +35,23 @@ public class UtilisateurValidator {
         {
             listErrors.add("Veuiller renseigner votre Email ");
         }
-        if(! StringUtils.hasText(utilisateurDTO.getAdresse().getAdresse1()))
-        {
-            listErrors.add("Le champs adresse1 est obligatoire");
-        }
-        if(! StringUtils.hasText(utilisateurDTO.getAdresse().getVille()))
-        {
-            listErrors.add("Le champs  ville  est obligatoire");
-        }
-        if(! StringUtils.hasText(utilisateurDTO.getAdresse().getCodePostal()))
-        {
-            listErrors.add("Le champs adresse postal est obligatoire");
-        }
-        if(utilisateurDTO.getDateNaissance()==null)
-        {
-            listErrors.add("veuiller remplir le champs date de naissance ");
-        }
+
+//        if(! StringUtils.hasText(utilisateurDTO.getAdresse().getAdresse1()))
+//        {
+//            listErrors.add("Le champs adresse1 est obligatoire");
+//        }
+//        if(! StringUtils.hasText(utilisateurDTO.getAdresse().getVille()))
+//        {
+//            listErrors.add("Le champs  ville  est obligatoire");
+//        }
+//        if(! StringUtils.hasText(utilisateurDTO.getAdresse().getCodePostal()))
+//        {
+//            listErrors.add("Le champs adresse postal est obligatoire");
+//        }
+//        if(utilisateurDTO.getDateNaissance()==null)
+//        {
+//            listErrors.add("veuiller remplir le champs date de naissance ");
+//        }
         return  listErrors ;
 
     }

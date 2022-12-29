@@ -1,5 +1,5 @@
-package sn.faty.GestionStock.model;
+package sn.faty.gestionstock.model;
 
 public enum TypeMvmentStock {
-    ENTREE , SORTIE
+    ENTREE ,SORTIE,CORRECTION_POSITIVE,CORRECTION_NEGATIVE
 }

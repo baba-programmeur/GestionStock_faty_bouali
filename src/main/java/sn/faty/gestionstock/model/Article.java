@@ -3,7 +3,7 @@ package sn.faty.gestionstock.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 
 @Entity
@@ -16,11 +16,19 @@ import java.util.List;
 public class Article extends  AbstractEntity {
 
     @Column(name = "CodeArticle")
+
     private String codeArticle ;
+
     private  String designation ;
-    private Integer prixUnitaireHt ;
-    private Integer prixUnitaireTtc ;
-    private Integer tauxTva ;
+
+    private Integer prixUnitaire ;
+
+    private String nomProduit ;
+
+    private Integer quantite ;
+
+    //private Instant date_creation;
+
     private  String photo ;
     @Column(name="code_idEntreprise")
     private int idEntreprise ;
@@ -28,6 +36,7 @@ public class Article extends  AbstractEntity {
     @ManyToOne
     @JoinColumn(name="idCategory")
     private Category category;
+
 
     @ManyToOne
     @JoinColumn(name="idEntreprise")
@@ -44,5 +53,9 @@ public class Article extends  AbstractEntity {
 
     @OneToMany(mappedBy = "article")
     private List<MouvMntStock> mouvMntStocks ;
+
+    @ManyToOne
+    @JoinColumn(name = "idAchat")
+    private Achat achat ;
 
 }

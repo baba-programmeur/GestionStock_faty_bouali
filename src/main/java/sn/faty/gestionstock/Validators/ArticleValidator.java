@@ -1,5 +1,7 @@
 package sn.faty.gestionstock.Validators;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 import sn.faty.gestionstock.dto.ArticleDTO;
 
@@ -18,32 +20,37 @@ public class ArticleValidator {
         {
             List<String> listErrors= new ArrayList<>();
 
-            if(articleDto ==null)
-            {
-                listErrors.add("Veuiller renseigner le prixUnitaire ");
-                listErrors.add("Veuiller renseigner le taux TVA ");
-                listErrors.add("Veuiller renseigner la designation ");
+            Logger logger= LoggerFactory.getLogger(ArticleValidator.class);
+
+//            if(articleDto ==null)
+//            {
+//                listErrors.add("Veuiller renseigner le prixUnitaire ");
+//                listErrors.add("Veuiller renseigner le taux TVA ");
+//                listErrors.add("Veuiller renseigner la designation ");
+//            }
+
+            if(!StringUtils.hasText(articleDto.getNomProduit())){
+                listErrors.add("Veuiller renseigner le nom du produit");
+                logger.debug("errorsnom {}",listErrors);
             }
 
-            if(articleDto.getPrixUnitaireHt()==null){
-                listErrors.add("veuiller renseigner le prix htt");
+            if(articleDto.getPrixUnitaire()==null){
+                listErrors.add("veuiller renseigner le prix Unitaire");
+                logger.debug("errorsPrix {}",listErrors);
             }
-            if(articleDto.getPrixUnitaireTtc()==null) {
-
-                listErrors.add("Veuiller renseigner le prixUnitaire ");
-            }
-            if(articleDto.getTauxTva()==null)
-            {
-                listErrors.add("Veuiller renseigner le taux TVA ");
-            }
-            if(! StringUtils.hasText(articleDto.getCodeArticle()))
-            {
-                listErrors.add("Veuiller renseigner le code ");
-            }
-            if(! StringUtils.hasText(articleDto.getDesignation()))
+            if(!StringUtils.hasText(articleDto.getDesignation()))
             {
                 listErrors.add("Veuiller renseigner la designation ");
+                logger.debug("errorsDesignation {}",listErrors);
             }
+
+            if(articleDto.getQuantite()==null) {
+
+                listErrors.add("veuiller renseigner la quantite");
+                logger.debug("errorsQuantite {}",listErrors);
+            }
+
+            logger.debug("***liste erreurs**** {}",listErrors);
 
             return  listErrors ;
 

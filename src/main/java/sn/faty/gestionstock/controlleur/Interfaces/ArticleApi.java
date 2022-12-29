@@ -1,6 +1,7 @@
 package sn.faty.gestionstock.controlleur.Interfaces;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sn.faty.gestionstock.dto.ArticleDTO;
 import sn.faty.gestionstock.dto.LigneCommandeClientDTO;
@@ -16,16 +17,9 @@ import static sn.faty.gestionstock.constants.Constants.APP_ROOT;
 
 public interface ArticleApi {
 
+
     @PostMapping(value = APP_ROOT+"/addArticle",consumes = MediaType.APPLICATION_JSON_VALUE
             ,produces = MediaType.APPLICATION_JSON_VALUE)
-  /*  @ApiOperation(value="Save a article",notes = "This fnction save article in the Database",response = ArticleDTO.class)
-   @ApiResponses(value= {
-
-           @ApiResponse(code=200,message = "article sauvegarde ou modifié"),
-           @ApiResponse(code=404,message="Article non sauvegarde")
-
-   })
-   */
 
     ArticleDTO saveArticle(@RequestBody ArticleDTO articleDTO);
   /*
@@ -40,7 +34,8 @@ public interface ArticleApi {
 
    */
     @GetMapping(value = APP_ROOT+ "/AllArticles",produces = MediaType.APPLICATION_JSON_VALUE)
-    List<ArticleDTO> findAll();
+
+    Page<ArticleDTO> findAllProducts(Pageable pageable);
 
 /*
     @ApiOperation(value="delete a article",notes = "This fnction delete an article in the Database")
@@ -96,5 +91,8 @@ public interface ArticleApi {
     List<LigneCommandeFournisseurDTO> findHistoriqueCommandeFournisseur(@PathVariable Long idArticle);
 
 
+    @PutMapping(value=APP_ROOT+"/updateArticle",produces = MediaType.APPLICATION_JSON_VALUE)
+
+      ArticleDTO  updateArticle(@RequestBody ArticleDTO articleDTO);
 
 }

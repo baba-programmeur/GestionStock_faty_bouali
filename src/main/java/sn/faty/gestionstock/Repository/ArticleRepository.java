@@ -1,6 +1,7 @@
 package sn.faty.gestionstock.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import sn.faty.gestionstock.model.Article;
 
 import java.util.List;
